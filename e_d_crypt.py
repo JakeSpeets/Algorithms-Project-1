@@ -1,24 +1,13 @@
 """
-@author: Nickolas Paternoster
-@project: Algorithms Project 1
-@file: encrypt_decrypt.py
+Algorithms Project 1
+Eric Merideth - Jacob Speights - Michael Olaoye
 
-This file is used for encrypting/decrypting
-messages given a public and/or private key.
-
+This file handles all encryption/decryption functions,
+as well as any helper functions needed.
 """
 
-# Used to convert ints to chars and store in array
-def convertToChar(message):
-    '''Converts a message to proper
-    char values according to ASCII'''
-    converted = []
-    for value in message:
-        converted.append(chr(value))
-    return converted
-
 def encrypt_recursive(m, e, n):
-    ''' Returns m^e mod n = c '''
+    ''' Evaluates m^e mod n, returns c '''
     if e == 0:
         return 1
     if e % 2 == 0:
@@ -29,7 +18,7 @@ def encrypt_recursive(m, e, n):
         return m * (t**2 % n) % n
 
 def decrypt_recursive(c, d, n):
-    ''' Returns c^d mod n = m '''
+    ''' Evaluates c^d mod n, returns m '''
     if d == 0:
         return 1
     if d % 2 == 0:
@@ -57,15 +46,3 @@ def decrypt_string(c, d, n):
     for i in c:
         decrypt.append(decrypt_recursive(i, d, n))
     return decrypt
-
-'''
-# Used for testing the encryption / decryption on numbers and strings
-
-# Message will go in index 0, e will go in 1, and n will go in 2
-
-c = encrypt_string('testing', new_e, new_n)
-print('Encrypted message is: ', c)
-
-m = decrypt_string(c, new_d, new_n)
-print('Decrypted message is: ', convertToChar(m))
-'''

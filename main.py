@@ -14,7 +14,9 @@ import d_sig
 def main():
     '''Main driver'''
     # Generate RSA keys, store in local variables
-    keyList = keyGen.RSA_gen_keys(10000, 100000)  # Prime number range: 10,000 to 100,000
+    pLower = 1*(10**80)
+    pUpper = 1*(10**100)
+    keyList = keyGen.RSA_gen_keys(pLower, pUpper)  # Prime number range: 10,000 to 100,000
     print('RSA keys have been generated.')
 
     # List return order: (p, q, n, e, d, phi)
@@ -161,7 +163,7 @@ def main():
                     
                 elif (o_sel == '4'):
                     # Generate RSA keys, store in local variables
-                    keyList = keyGen.RSA_gen_keys(10000, 100000)  # Prime number range: 10,000 to 100,000
+                    keyList = keyGen.RSA_gen_keys(pLower, pUpper)  # Prime number range: 10,000 to 100,000
                     print('New RSA keys have been generated.')
 
                     # List return order: (p, q, n, e, d, phi)
